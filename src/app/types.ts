@@ -1,0 +1,7 @@
+export type Goal =
+  | "SLEEP_HOURS"
+  | "SPORT"
+  | "MORNING_STREAM"
+  | "HEALTHY_LUNCH"
+  | "AFTERNOON_STREAM"
+  | "HEALTHY_DINNER";

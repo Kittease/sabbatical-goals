@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum GoalStatus {
+  WAITING
+  COMPLETED
+  FAILED
+
+  @@map("goal_status")
+}
+
+model Days {
+  date                DateTime   @id @default(now()) @db.Date
+  sport               GoalStatus @default(WAITING)
+  sportNote           String?    @map("sport_note")
+  morningStream       GoalStatus @default(WAITING) @map("morning_stream")
+  morningStreamNote   String?    @map("morning_stream_note")
+  healthyLunch        GoalStatus @default(WAITING) @map("healthy_lunch")
+  healthyLunchNote    String?    @map("healthy_lunch_note")
+  afternoonStream     GoalStatus @default(WAITING) @map("afternoon_stream")
+  afternoonStreamNote String?    @map("afternoon_stream_note")
+  healthyDinner       GoalStatus @default(WAITING) @map("healthy_dinner")
+  healthyDinnerNote   String?    @map("healthy_dinner_note")
+  sleepHours          GoalStatus @default(WAITING) @map("sleep_hours")
+  sleepHoursNote      String?    @map("sleep_hours_note")
+
+  @@map("days")
+}
